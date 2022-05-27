@@ -1,0 +1,46 @@
+<div class="list-user">
+  <h3>List Users</h3>
+  <div class="mt-3">
+    <table class="table ">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Username</th>
+          <th scope="col">Email</th>
+          <th scope="col" class="w-100"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% ugames.forEach((ugame, index) => { %>
+          <th scope="row"><%= index + 1 %></th>
+          <td ><%= ugame.username %></td>
+          <td><%= ugame.email %></td>
+          <td>
+            <div class="d-flex gap-2 text-nowrap">
+              <a class="btn btn-success btn-sm" href="/admin/<%= ugame.id %>" role="button">
+                <i class="bi-eye-fill"></i> Lihat Detail
+              </a>
+  
+              <a class="btn btn-primary btn-sm" href="/admin/<%= ugame.id %>/edit" role="button">
+                <i class="bi-pencil-fill"></i> Edit
+              </a>
+  
+              <form  class="btn-action" action="/admin/<%= ugame.id %>?_method=DELETE" method="post">
+                <button class="btn btn-danger btn-sm" type="submit">
+                  <i class="bi-trash-fill"></i> Hapus
+                </button>
+              </form>
+            </div>
+          </td>
+        </tr>
+      <% }) %>
+        <tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="d-flex justify-content-between align-items-center">
+    <a class="btn btn-primary" href="/admin/create" role="button">
+      <i class="bi-plus-lg"></i> Create New User
+    </a>
+  </div>
+</div>
